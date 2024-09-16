@@ -13,7 +13,8 @@ $ sudo dnf install -y yum-utils
 ## 1. Clone the repository:
 
 ```
-git clone https://github.com/NathenGober/Ansible-Playbook-for-DockerCE-on-RHEL8
+git clone https://github.com/NathenGober/ansible-playbook-for-dockerce-on-rhel8
+cd ansible-playbook-for-dockerce-on-rhel8
 ```
 
 ## 2. Run the playbook:

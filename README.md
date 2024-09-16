@@ -4,6 +4,7 @@ Here is an ansible playbook automating the process on removing podman and other 
 HOWEVER, before running the playbook, we must install Ansible on the HPE ProLiant DL20 server running RHEL 8 OS, here are the steps:
 
 1. Update the System:
+
 '''
 sudo dnf update
 '''

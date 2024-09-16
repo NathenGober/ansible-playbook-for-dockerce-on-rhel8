@@ -1,0 +1,78 @@
+---
+- name: Install Docker on RHEL 8
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update all packages
+      dnf:
+        name: "*"
+        state: latest
+
+    - name: Install yum-utils
+      dnf:
+        name: yum-utils
+        state: present
+
+    - name: Add Docker repository
+      command: >
+        yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+    - name: Update system repositories
+      dnf:
+        name: "*"
+        state: latest
+
+    - name: Remove conflicting packages
+      dnf:
+        name:
+          - podman
+          - buildah
+        state: absent
+
+    - name: Install Docker packages
+      dnf:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+
+    - name: Enable and start Docker service
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Check Docker version
+      command: docker version
+      register: docker_version
+
+    - debug:
+        msg: "Docker version: {{ docker_version.stdout }}"
+
+    - name: Check Docker info
+      command: docker info
+      register: docker_info
+
+    - debug:
+        msg: "Docker info: {{ docker_info.stdout }}"
+
+    - name: Add non-root user to Docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+      when: ansible_user != 'root'
+
+    - name: Reboot the system
+      reboot:
+        msg: "Reboot initiated by Ansible for Docker group changes to take effect"
+        when: ansible_user != 'root'
+
+    - name: Test Docker with hello-world image
+      command: docker run hello-world
+      register: hello_world_output
+
+    - debug:
+        msg: "Hello-world output: {{ hello_world_output.stdout }}"

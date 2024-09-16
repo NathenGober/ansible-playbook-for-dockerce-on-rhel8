@@ -7,3 +7,10 @@ HOWEVER, before running the playbook, we must install Ansible on the HPE ProLian
 '''
 $ sudo dnf update
 '''
+```
+$ sudo apt-get update
+$ sudo apt-get install software-properties-common
+$ sudo apt-add-repository ppa:ansible/ansible
+$ sudo apt-get update
+$ sudo apt-get install ansible
+```

@@ -8,3 +8,9 @@ HOWEVER, before running the playbook, we must install Ansible on the HPE ProLian
 $ sudo dnf update
 $ sudo dnf install -y yum-utils
 ```
+# Running the Docker Playbook to install Docker on RHEL 8 OS
+
+## 1. Enter the following command:
+```
+ansible-playbook -i your_inventory_file docker_playbook.yml
+```

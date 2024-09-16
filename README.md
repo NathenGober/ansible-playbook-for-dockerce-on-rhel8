@@ -10,7 +10,13 @@ $ sudo dnf install -y yum-utils
 ```
 # Running the Docker Playbook to install Docker on RHEL 8 OS
 
-## 1. Enter the following command:
+## 1. Clone the repository:
+
+```
+git clone https://github.com/NathenGober/Ansible-Playbook-for-DockerCE-on-RHEL8
+```
+
+## 2. Run the playbook:
 ```
 ansible-playbook -i your_inventory_file docker_playbook.yml
 ```

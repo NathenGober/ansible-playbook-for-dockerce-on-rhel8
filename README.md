@@ -3,13 +3,7 @@ Here is an ansible playbook automating the process on removing podman and other 
 
 HOWEVER, before running the playbook, we must install Ansible on the HPE ProLiant DL20 server running RHEL 8 OS, here are the steps:
 
-## 1. Update the System:
-```
-$ sudo dnf update
-$ sudo dnf install -y yum-utils
-```
-# Running the Docker Playbook to install Docker on RHEL 8 OS
-
+# Set Up the Local Environment 
 ## 1. Clone the repository:
 
 ```
@@ -17,7 +11,8 @@ git clone https://github.com/NathenGober/ansible-playbook-for-dockerce-on-rhel8
 cd ansible-playbook-for-dockerce-on-rhel8
 ```
 
-## 2. Run the playbook:
+## 2. Install Ansible:
 ```
-ansible-playbook -i your_inventory_file docker_playbook.yml
+sudo dnf install epel-release
+sudo dnf install ansible
 ```

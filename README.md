@@ -26,3 +26,14 @@ sudo dnf remove podman
 ```
 ansible-playbook install_docker.yml
 ```
+
+# Explanation of Ansible Playbook
+- Install yum-utils: Ensures yum-utils is installed.
+- Add Docker repository: Adds the Docker repository to your system.
+- Remove conflicting packages: Removes podman and buildah to avoid conflicts with Docker.
+- Install Docker packages: Installs Docker CE and its dependencies.
+- Enable and start Docker service: Ensures Docker starts on boot and is running.
+- Check Docker version and info: Verifies the Docker installation.
+- Add non-root user to Docker group: Adds the current user to the Docker group.
+- Reboot the system: Reboots the system to apply group changes.
+- Test Docker with hello-world image: Runs a test Docker container to verify everything is working.

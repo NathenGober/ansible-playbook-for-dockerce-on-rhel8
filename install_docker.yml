@@ -4,11 +4,6 @@
   become: yes
 
   tasks:
-    - name: Update all packages
-      dnf:
-        name: "*"
-        state: latest
-
     - name: Install yum-utils
       dnf:
         name: yum-utils
@@ -17,11 +12,6 @@
     - name: Add Docker repository
       command: >
         yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-
-    - name: Update system repositories
-      dnf:
-        name: "*"
-        state: latest
 
     - name: Remove conflicting packages
       dnf:
@@ -68,7 +58,7 @@
     - name: Reboot the system
       reboot:
         msg: "Reboot initiated by Ansible for Docker group changes to take effect"
-        when: ansible_user != 'root'
+      when: ansible_user != 'root'
 
     - name: Test Docker with hello-world image
       command: docker run hello-world

@@ -16,3 +16,8 @@ cd ansible-playbook-for-dockerce-on-rhel8
 sudo dnf install epel-release
 sudo dnf install ansible
 ```
+
+## 3. Uninstall Podman:
+```
+sudo dnf remove podman
+```

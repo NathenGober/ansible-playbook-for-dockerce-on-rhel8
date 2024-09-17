@@ -21,3 +21,8 @@ sudo dnf install ansible
 ```
 sudo dnf remove podman
 ```
+
+## 4. Run the Playbook:
+```
+ansible-playbook install_docker.yml
+```
